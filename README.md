@@ -5,7 +5,7 @@ Provision resources on GCP. It also produces an Ansible Inventory file.
 ## Usage
 
 1. Install Terraform.
-2. Download credentials in JSON format.
+2. Download GCP credentials (JSON).
 3. Copy `terraform.tfvars-sample` to `terraform.tfvars` and update contents.
 4. `terraform init`.
 5. `terraform apply`.
