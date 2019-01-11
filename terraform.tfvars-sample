@@ -1,0 +1,21 @@
+
+project = "<CHANGE_ME>"
+# GCP credentials in .json format
+credentials = "<CHANGE_ME>.json"
+
+# Our IP ranges (updated)
+allowed_ip_ranges = [
+]
+
+ssh_user = "centos"
+ssh_pub_key_file = "/Users/XXXXX/.ssh/id_rsa.pub"
+
+zone = "europe-west1-b"
+disk_size = "80"
+instance_prefix = "tf-<CHANGE_ME>"
+network = "tf-<CHANGE_ME>"
+master_count = 1
+worker_count = 0
+edge_count = 0
+machine_type = "n1-standard-2"
+image = "centos-7-v20180911"
