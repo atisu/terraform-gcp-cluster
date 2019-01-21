@@ -17,7 +17,7 @@ resource "google_compute_instance" "master" {
    }
 
    network_interface {
-      network = "${google_compute_network.vpc_network.self_link}"
+      subnetwork = "${google_compute_subnetwork.vpc_subnetwork.self_link}"
       access_config {
          network_tier = "STANDARD"
       }
@@ -45,7 +45,7 @@ resource "google_compute_instance" "worker" {
    }
 
    network_interface {
-      network = "${google_compute_network.vpc_network.self_link}"
+      subnetwork = "${google_compute_subnetwork.vpc_subnetwork.self_link}"
       access_config {
          network_tier = "STANDARD"
       }
@@ -73,7 +73,7 @@ resource "google_compute_instance" "edge" {
    }
 
    network_interface {
-      network = "${google_compute_network.vpc_network.self_link}"
+      subnetwork = "${google_compute_subnetwork.vpc_subnetwork.self_link}"
       access_config {
          network_tier = "STANDARD"
       }

@@ -19,6 +19,10 @@ variable "zone" {
    default = "europe-west1-b"
 }
 
+variable "region" {
+   default = "europe-west1"
+}
+
 variable "disk_size" {
    default = "10"
 }
