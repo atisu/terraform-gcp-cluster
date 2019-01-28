@@ -1,12 +1,23 @@
 variable "ssh_user" {
    default = "default"
 }
-variable "ssh_pub_key_file" {
+
+variable "ssh_pub_keys" {
+   default = []
+}
+
+variable "ssh_pub_key_file_1" {
    default = "default"
 }
+
+variable "ssh_pub_key_file_2" {
+   default = "default"
+}
+
 variable "project" {
    default = "default"
 }
+
 variable "credentials" {
    default = ""
 }
@@ -39,7 +50,15 @@ variable "edge_count" {
    default = 1
 }
 
-variable "machine_type" {
+variable "master_machine_type" {
+   default = "n1-standard-1"
+}
+
+variable "worker_machine_type" {
+   default = "n1-standard-1"
+}
+
+variable "edge_machine_type" {
    default = "n1-standard-1"
 }
 

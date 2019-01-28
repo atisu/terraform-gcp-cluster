@@ -2,7 +2,7 @@
 resource "google_compute_instance" "master" {
    count = "${var.master_count}"
    name = "${var.instance_prefix}-m${count.index}"
-   machine_type = "${var.machine_type}"
+   machine_type = "${var.master_machine_type}"
    zone = "${var.zone}"
    boot_disk {
       initialize_params {
@@ -12,7 +12,7 @@ resource "google_compute_instance" "master" {
    }
 
    metadata {
-      sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
+      ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_file_1)} ${var.ssh_user}\n${var.ssh_user}:${file(var.ssh_pub_key_file_2)} ${var.ssh_user}"
       index = "${count.index}"
    }
 
@@ -23,14 +23,14 @@ resource "google_compute_instance" "master" {
       }
    }
 
-   tags = ["allow-ssh", "allow-8080"]
+   tags = ["allow-ssh", "allow-8080", "allow-ranger-ui", "allow-yarn-ui"]
 }
 
 
 resource "google_compute_instance" "worker" {
    count = "${var.worker_count}"
    name = "${var.instance_prefix}-w${count.index}"
-   machine_type = "${var.machine_type}"
+   machine_type = "${var.worker_machine_type}"
    zone = "${var.zone}"
    boot_disk {
       initialize_params {
@@ -40,7 +40,7 @@ resource "google_compute_instance" "worker" {
    }
 
    metadata {
-      sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
+      ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_file_1)} ${var.ssh_user}\n${var.ssh_user}:${file(var.ssh_pub_key_file_2)} ${var.ssh_user}"
       index = "${count.index}"
    }
 
@@ -58,7 +58,7 @@ resource "google_compute_instance" "worker" {
 resource "google_compute_instance" "edge" {
    count = "${var.edge_count}"
    name = "${var.instance_prefix}-e${count.index}"
-   machine_type = "${var.machine_type}"
+   machine_type = "${var.edge_machine_type}"
    zone = "${var.zone}"
    boot_disk {
       initialize_params {
@@ -68,7 +68,7 @@ resource "google_compute_instance" "edge" {
    }
 
    metadata {
-      sshKeys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
+      ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_file_1)} ${var.ssh_user}\n${var.ssh_user}:${file(var.ssh_pub_key_file_2)} ${var.ssh_user}"
       index = "${count.index}"
    }
 

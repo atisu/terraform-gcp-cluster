@@ -24,6 +24,19 @@ resource "google_compute_firewall" "allow-8080" {
   source_ranges = "${var.allowed_ip_ranges}"
 }
 
+resource "google_compute_firewall" "allow-yarn-ui" {
+  name    = "${google_compute_network.vpc_network.name}-allow-yarn-ui"
+  network = "${google_compute_network.vpc_network.name}"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["8088"]
+  }
+
+  target_tags = ["allow-yarn-ui"]
+  source_ranges = "${var.allowed_ip_ranges}"
+}
+
 resource "google_compute_firewall" "allow-ssh" {
   name    = "${google_compute_network.vpc_network.name}-allow-ssh"
   network = "${google_compute_network.vpc_network.name}"
@@ -34,6 +47,20 @@ resource "google_compute_firewall" "allow-ssh" {
   }
 
   target_tags = ["allow-ssh"]
+  source_ranges = "${var.allowed_ip_ranges}"
+}
+
+
+resource "google_compute_firewall" "allow-ranger-ui" {
+  name    = "${google_compute_network.vpc_network.name}-allow-ranger-ui"
+  network = "${google_compute_network.vpc_network.name}"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["6080"]
+  }
+
+  target_tags = ["allow-ranger-ui"]
   source_ranges = "${var.allowed_ip_ranges}"
 }
 

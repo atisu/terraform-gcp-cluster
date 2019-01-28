@@ -8,8 +8,10 @@ allowed_ip_ranges = [
 ]
 
 ssh_user = "centos"
-ssh_pub_key_file = "/Users/XXXXX/.ssh/id_rsa.pub"
+ssh_pub_key_file_1 = "/Users/XXXXX/.ssh/id_rsa.pub"
+ssh_pub_key_file_2 = "/Users/XXXXX/.ssh/id2_rsa.pub"
 
+region = "europe-west1"
 zone = "europe-west1-b"
 disk_size = "80"
 instance_prefix = "tf-<CHANGE_ME>"
@@ -17,5 +19,7 @@ network = "tf-<CHANGE_ME>"
 master_count = 1
 worker_count = 0
 edge_count = 0
-machine_type = "n1-standard-2"
+master_machine_type = "n1-standard-2"
+worker_machine_type = "n1-standard-2"
+edge_machine_type = "n1-standard-2"
 image = "centos-7-v20180911"
