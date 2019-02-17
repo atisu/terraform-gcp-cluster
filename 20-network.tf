@@ -64,7 +64,7 @@ resource "google_compute_firewall" "allow-ranger-ui" {
   source_ranges = "${var.allowed_ip_ranges}"
 }
 
-resource "google_compute_firewall" "allow-ranger-zeppelin-ui" {
+resource "google_compute_firewall" "allow-zeppelin-ui" {
   name    = "${google_compute_network.vpc_network.name}-allow-zeppelin-ui"
   network = "${google_compute_network.vpc_network.name}"
 
