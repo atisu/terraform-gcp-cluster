@@ -8,6 +8,7 @@ resource "google_compute_instance" "master" {
       initialize_params {
          image = "${var.image}"
          size = "${var.disk_size}"
+         type = "pd-ssd"
       }
    }
 
@@ -23,7 +24,7 @@ resource "google_compute_instance" "master" {
       }
    }
 
-   tags = ["allow-ssh", "allow-8080", "allow-ranger-ui", "allow-yarn-ui"]
+   tags = ["allow-ssh", "allow-8080", "allow-ranger-ui", "allow-yarn-ui", "allow-zeppelin-ui"]
 }
 
 
@@ -36,6 +37,7 @@ resource "google_compute_instance" "worker" {
       initialize_params {
          image = "${var.image}"
          size = "${var.disk_size}"
+         type = "pd-ssd"
       }
    }
 
@@ -64,6 +66,7 @@ resource "google_compute_instance" "edge" {
       initialize_params {
          image = "${var.image}"
          size = "${var.disk_size}"
+         type = "pd-ssd"
       }
    }
 

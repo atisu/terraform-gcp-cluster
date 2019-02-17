@@ -64,6 +64,19 @@ resource "google_compute_firewall" "allow-ranger-ui" {
   source_ranges = "${var.allowed_ip_ranges}"
 }
 
+resource "google_compute_firewall" "allow-ranger-zeppelin-ui" {
+  name    = "${google_compute_network.vpc_network.name}-allow-zeppelin-ui"
+  network = "${google_compute_network.vpc_network.name}"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["9995"]
+  }
+
+  target_tags = ["allow-zeppelin-ui"]
+  source_ranges = "${var.allowed_ip_ranges}"
+}
+
 resource "google_compute_firewall" "allow-internal" {
   name    = "${google_compute_network.vpc_network.name}-allow-internal"
   network = "${google_compute_network.vpc_network.name}"
