@@ -23,5 +23,5 @@ list-ips:
 
 apply:
 	terraform apply
-	@cp inventory ../opserv-keel/ansible/inventory/00-static
+	@cp inventory ../opserv-keel/ansible/inventory/static/00-static
 
