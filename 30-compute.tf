@@ -4,6 +4,7 @@ resource "google_compute_instance" "master" {
    name = "${var.instance_prefix}-m${count.index}"
    machine_type = "${var.master_machine_type}"
    zone = "${var.zone}"
+   allow_stopping_for_update = true
    boot_disk {
       initialize_params {
          image = "${var.image}"
@@ -33,6 +34,7 @@ resource "google_compute_instance" "worker" {
    name = "${var.instance_prefix}-w${count.index}"
    machine_type = "${var.worker_machine_type}"
    zone = "${var.zone}"
+   allow_stopping_for_update = true
    boot_disk {
       initialize_params {
          image = "${var.image}"
@@ -62,6 +64,7 @@ resource "google_compute_instance" "edge" {
    name = "${var.instance_prefix}-e${count.index}"
    machine_type = "${var.edge_machine_type}"
    zone = "${var.zone}"
+   allow_stopping_for_update = true
    boot_disk {
       initialize_params {
          image = "${var.image}"
