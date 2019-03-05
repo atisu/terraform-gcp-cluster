@@ -2,13 +2,14 @@
 .PHONY: usage
 
 usage:
-	@echo " usage: make clean|set-name|plan|init|apply|list-ips\n"
+	@echo " usage: make clean|set-name|plan|init|apply|list-ips|destroy\n"
 	@echo "  clean:\t remove all generated files"
 	@echo "  init:\t\t run terraform init"
 	@echo "  set-name:\t set prefix and network name for instances"
 	@echo "  plan:\t\t run terraform plan"
 	@echo "  apply:\t create or update instances and inventory file via terraform"
 	@echo "  list-ips:\t list instance ips from GCP"
+	@echo "  destroy:\t destroy all resources via terraform"
 	@echo "\n"
 
 plan:
@@ -31,4 +32,7 @@ list-ips:
 apply:
 	terraform apply
 	@cp inventory ../opserv-keel/ansible/inventory/static/00-static
+
+destroy:
+	terraform destroy
 
