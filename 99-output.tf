@@ -18,28 +18,25 @@ resource "null_resource" "ansible-inventory" {
     command = "echo \"${join(
       "\n",
       formatlist(
-        "\n[hdp-master-%s]\n%s ansible_host=%s\n",
+        "\n[hdp-master-%s]\n%s\n",
         google_compute_instance.master.*.metadata.index,
-        google_compute_instance.master.*.name,
-        google_compute_instance.master.*.network_interface.0.network_ip))}\" >> inventory"
+        google_compute_instance.master.*.name))}\" >> inventory"
   }
 
   provisioner "local-exec" {
     command = "echo \"\n[hdp-edges]\n${join(
       "\n",
       formatlist(
-        "%s ansible_host=%s",
-        google_compute_instance.edge.*.name,
-        google_compute_instance.edge.*.network_interface.0.network_ip))}\" >> inventory"
+        "%s",
+        google_compute_instance.edge.*.name))}\" >> inventory"
   }
 
   provisioner "local-exec" {
     command = "echo \"\n[hdp-workers]\n${join(
       "\n",
       formatlist(
-        "%s ansible_host=%s",
-        google_compute_instance.worker.*.name,
-        google_compute_instance.worker.*.network_interface.0.network_ip))}\" >> inventory"
+        "%s",
+        google_compute_instance.worker.*.name))}\" >> inventory"
   }
 
   provisioner "local-exec" {
