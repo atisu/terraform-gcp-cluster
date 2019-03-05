@@ -6,7 +6,6 @@
   - id: trailing-whitespace
   - id: check-case-conflict
   - id: check-merge-conflict
-  - id: detect-gcp-credentials
   - id: detect-private-key
 
 - repo: git://github.com/kintoandar/pre-commit.git
