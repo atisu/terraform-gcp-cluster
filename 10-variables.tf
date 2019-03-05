@@ -73,5 +73,3 @@ variable "network"  {
 variable "image" {
    default = "centos-7-v20180911"
 }
-
-

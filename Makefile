@@ -35,4 +35,3 @@ apply:
 
 destroy:
 	terraform destroy
-
